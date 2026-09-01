@@ -51,7 +51,7 @@ public class Niño {
                 "Hernández", "Martínez", "González" };
 
         private String nombre, apellido;
-        private Pizarra pizarron, pizarrin;
+        private Pizarra pizarron, pizarrin = new Pizarra();
 
         public Builder nombreAleatorio() {
             this.nombre = NOMBRES[RandomUtils.valorAleatorio(0, NOMBRES.length - 1)];
@@ -69,7 +69,6 @@ public class Niño {
         }
 
         public Niño build() {
-            this.pizarrin = new Pizarra();
             return new Niño(this);
         }
     }
