@@ -4,7 +4,7 @@ public class SimpleLinkedList<ListData> implements List<ListData> {
 
     private Node<ListData> head;
 
-    private int contador = 0;
+    private int counter = 0;
 
     private static class Node<NodeElement> {
         public Node(NodeElement newData) {
@@ -25,7 +25,7 @@ public class SimpleLinkedList<ListData> implements List<ListData> {
             newNode.next = head;
             head = newNode;
         }
-        contador++;
+        counter++;
     }
 
     @Override
@@ -38,14 +38,14 @@ public class SimpleLinkedList<ListData> implements List<ListData> {
 
         if (current.data == element) {
             head = current.next;
-            contador--;
+            counter--;
             return true;
         }
 
         while (current.next != null) {
             if (current.next.data == element) {
                 current.next = current.next.next;
-                contador--;
+                counter--;
                 return true;
             }
 
@@ -56,21 +56,26 @@ public class SimpleLinkedList<ListData> implements List<ListData> {
     }
 
     @Override
-    public ListData get(int goal) {
-        int index = 0;
-        Node<ListData> current = head;
-        while (index < goal) {
-            if (current == null) {
-                return null;
-            }
+    public ListData get(int indexGoal) {
+        if (indexGoal < 0) {
+            return null;
+        }
 
+        if (indexGoal >= counter) {
+            return null;
+        }
+
+        Node<ListData> current = head;
+
+        for (int index = 0; index < indexGoal; index++) {
             current = current.next;
         }
+
         return current.data;
     }
 
     @Override
-    public boolean conteins(ListData element) {
+    public boolean contains(ListData element) {
         if (isEmpty()) {
             return false;
         }
@@ -90,7 +95,7 @@ public class SimpleLinkedList<ListData> implements List<ListData> {
 
     @Override
     public int size() {
-        return contador;
+        return counter;
     }
 
     @Override

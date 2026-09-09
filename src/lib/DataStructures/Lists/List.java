@@ -7,7 +7,7 @@ public interface List<ListData> {
 
     public ListData get(int index);
 
-    public boolean conteins(ListData element);
+    public boolean contains(ListData element);
 
     public int size();
 
