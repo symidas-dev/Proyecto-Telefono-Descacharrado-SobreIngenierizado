@@ -1,9 +1,21 @@
 package lib.Patterns.Observer;
 
-public interface Observable {
-    public void addObserver(Observer observer);
+import lib.DataStructures.Lists.SimpleLinkedList;
 
-    public void removeObserver(Observer observer);
+public class Observable {
+    SimpleLinkedList<Observer> observers = new SimpleLinkedList<Observer>();
 
-    public void notifyAllObservers();
+    public void addObserver(Observer observer) {
+        observers.insert(observer);
+    }
+
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyAllObservers() {
+        for (int i = 0; i < observers.size(); i++) {
+            observers.get(i).update();
+        }
+    }
 }
