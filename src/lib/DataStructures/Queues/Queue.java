@@ -1,12 +1,12 @@
 package lib.DataStructures.Queues;
 
-public interface Queue<QueueElement> {
+public interface Queue<QueueData> {
 
-    void enqueue(QueueElement newIntegrant);
+    void enqueue(QueueData newIntegrant);
 
-    QueueElement dequeue();
+    QueueData dequeue();
 
-    QueueElement peek();
+    QueueData peek();
 
     boolean isEmpty();
 
