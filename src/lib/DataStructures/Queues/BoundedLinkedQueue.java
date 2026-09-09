@@ -1,9 +1,9 @@
 package lib.DataStructures.Queues;
 
-public class BoundedLinkedQueue<QueueElement> implements Queue<QueueElement> {
+public class BoundedLinkedQueue<QueueData> implements Queue<QueueData> {
 
-    private Node<QueueElement> head;
-    private Node<QueueElement> tail;
+    private Node<QueueData> head;
+    private Node<QueueData> tail;
 
     private final int CAPACITY;
     private int size;
@@ -28,12 +28,12 @@ public class BoundedLinkedQueue<QueueElement> implements Queue<QueueElement> {
     /**
      * (non-Javadoc)
      * 
-     * @see lib.DataStructures.Queues.Queue#enqueue(QueueElement)
+     * @see lib.DataStructures.Queues.Queue#enqueue(QueueData)
      */
     @Override
-    public void enqueue(QueueElement newData) {
+    public void enqueue(QueueData newData) {
         if (!isFull()) {
-            Node<QueueElement> newNode = new Node<QueueElement>(newData);
+            Node<QueueData> newNode = new Node<QueueData>(newData);
             if (head == null) {
                 head = newNode;
                 tail = newNode;
@@ -59,9 +59,9 @@ public class BoundedLinkedQueue<QueueElement> implements Queue<QueueElement> {
      * @see lib.DataStructures.Queues.Queue#dequeue()
      */
     @Override
-    public QueueElement dequeue() {
+    public QueueData dequeue() {
         if (!isEmpty()) {
-            QueueElement data = head.data;
+            QueueData data = head.data;
             head = head.previous;
 
             if (head == null) {
@@ -80,7 +80,7 @@ public class BoundedLinkedQueue<QueueElement> implements Queue<QueueElement> {
      * @see lib.DataStructures.Queues.Queue#peek()
      */
     @Override
-    public QueueElement peek() {
+    public QueueData peek() {
         if (!isEmpty()) {
             return head.data;
         } else {
