@@ -117,4 +117,10 @@ public class BoundedSimpleLinkedList<ListData> implements List<ListData> {
         return head == null;
     }
 
+    @Override
+    public void clear() {
+        head = null;
+        counter = 0;
+    }
+
 }

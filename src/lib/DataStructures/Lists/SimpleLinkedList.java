@@ -103,4 +103,10 @@ public class SimpleLinkedList<ListData> implements List<ListData> {
         return head == null;
     }
 
+    @Override
+    public void clear() {
+        head = null;
+        counter = 0;
+    }
+
 }

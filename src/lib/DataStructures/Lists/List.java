@@ -12,4 +12,6 @@ public interface List<ListData> {
     public int size();
 
     public boolean isEmpty();
+
+    public void clear();
 }
