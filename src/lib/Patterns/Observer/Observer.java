@@ -1,5 +1,5 @@
 package lib.Patterns.Observer;
 
 public interface Observer {
-    public void update();
+    public void update(Observable source);
 }

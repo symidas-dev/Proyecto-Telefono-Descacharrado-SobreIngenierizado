@@ -16,7 +16,7 @@ public class Observable {
 
     public void notifyAllObservers() {
         for (int i = 0; i < observers.size(); i++) {
-            observers.get(i).update();
+            observers.get(i).update(this);
         }
     }
 }
