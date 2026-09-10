@@ -1,6 +1,6 @@
 package lib.DataStructures.Queues;
 
-public interface Queue<QueueData> {
+interface Queue<QueueData> {
 
     QueueData dequeue();
 

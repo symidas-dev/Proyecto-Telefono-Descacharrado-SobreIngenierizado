@@ -1,6 +1,6 @@
 package lib.DataStructures.Lists;
 
-public interface List<ListData> {
+interface List<ListData> {
     public boolean remove(ListData element);
 
     public ListData get(int index);
