@@ -1,9 +1,10 @@
 package lib.Patterns.Observer;
 
-import lib.DataStructures.Lists.SimpleLinkedList;
+import lib.DataStructures.Lists.UnboundedList;
+import lib.DataStructures.Lists.UnboundedSimpleLinkedList;
 
 public class Observable {
-    SimpleLinkedList<Observer> observers = new SimpleLinkedList<Observer>();
+    UnboundedList<Observer> observers = new UnboundedSimpleLinkedList<Observer>();
 
     public void addObserver(Observer observer) {
         observers.insert(observer);
