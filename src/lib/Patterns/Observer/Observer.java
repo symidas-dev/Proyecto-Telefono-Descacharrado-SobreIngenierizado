@@ -1,5 +1,7 @@
 package lib.Patterns.Observer;
 
-public interface Observer {
-    public void update(Observable source);
+public interface Observer<Data> {
+
+    public void update(Event<Data> event);
+
 }
