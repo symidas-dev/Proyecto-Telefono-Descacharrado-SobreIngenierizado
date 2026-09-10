@@ -1,6 +1,6 @@
 package lib.DataStructures.Lists;
 
-public class SimpleLinkedList<ListData> implements List<ListData> {
+public class UnboundedSimpleLinkedList<ListData> implements UnboundedList<ListData> {
 
     private Node<ListData> head;
 

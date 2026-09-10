@@ -1,6 +1,6 @@
 package lib.DataStructures.Queues;
 
-public class BoundedLinkedQueue<QueueData> implements Queue<QueueData> {
+public class BoundedLinkedQueue<QueueData> implements BoundedQueue<QueueData> {
 
     private Node<QueueData> head;
     private Node<QueueData> tail;
@@ -18,9 +18,6 @@ public class BoundedLinkedQueue<QueueData> implements Queue<QueueData> {
         NodeElement data;
     }
 
-    /**
-     * @param capacity
-     */
     public BoundedLinkedQueue(int capacity) {
         this.CAPACITY = capacity;
     }
@@ -28,10 +25,11 @@ public class BoundedLinkedQueue<QueueData> implements Queue<QueueData> {
     /**
      * (non-Javadoc)
      * 
-     * @see lib.DataStructures.Queues.Queue#enqueue(QueueData)
+     * @see lib.DataStructures.Queues.BoundedQueue#enqueue(java.lang.Object)
+     * @return true if the queue is not full, false otherwise
      */
     @Override
-    public void enqueue(QueueData newData) {
+    public boolean enqueue(QueueData newData) {
         if (!isFull()) {
             Node<QueueData> newNode = new Node<QueueData>(newData);
             if (head == null) {
@@ -41,14 +39,18 @@ public class BoundedLinkedQueue<QueueData> implements Queue<QueueData> {
                 tail.previous = newNode;
                 tail = newNode;
             }
+            return true;
         } else {
-            throw new RuntimeException("Queue is full");
+            return false;
         }
     }
 
     /**
-     * @return
+     * (non-Javadoc)
+     * 
+     * @see lib.DataStructures.Queues.BoundedQueue#isFull()
      */
+    @Override
     public boolean isFull() {
         return size >= CAPACITY;
     }

@@ -1,8 +1,6 @@
 package lib.DataStructures.Lists;
 
 public interface List<ListData> {
-    public void insert(ListData element);
-
     public boolean remove(ListData element);
 
     public ListData get(int index);

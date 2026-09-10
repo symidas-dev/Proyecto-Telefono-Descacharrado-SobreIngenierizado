@@ -1,6 +1,6 @@
 package lib.DataStructures.Lists;
 
-public class BoundedSimpleLinkedList<ListData> implements List<ListData> {
+public class BoundedSimpleLinkedList<ListData> implements BoundedList<ListData> {
 
     private Node<ListData> head;
 
@@ -21,10 +21,15 @@ public class BoundedSimpleLinkedList<ListData> implements List<ListData> {
         NodeElement data;
     }
 
+    /**
+     * (non-Javadoc)
+     * 
+     * @see lib.DataStructures.Lists.BoundedList#insert(ListData)
+     */
     @Override
-    public void insert(ListData element) {
+    public boolean insert(ListData element) {
         if (isFull()) {
-            throw new IllegalStateException("The list has reached its limit (" + LIMIT + ")");
+            return false;
         }
 
         Node<ListData> newNode = new Node<ListData>(element);
@@ -36,8 +41,15 @@ public class BoundedSimpleLinkedList<ListData> implements List<ListData> {
         }
 
         counter++;
+        return true;
     }
 
+    /**
+     * (non-Javadoc)
+     * 
+     * @see lib.DataStructures.Lists.BoundedList#isFull()
+     */
+    @Override
     public boolean isFull() {
         return counter == LIMIT;
     }

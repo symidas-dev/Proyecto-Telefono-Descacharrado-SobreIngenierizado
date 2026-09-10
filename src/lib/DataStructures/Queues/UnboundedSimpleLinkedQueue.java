@@ -1,6 +1,6 @@
 package lib.DataStructures.Queues;
 
-public class SimpleLinkedQueue<QueueData> implements Queue<QueueData> {
+public class UnboundedSimpleLinkedQueue<QueueData> implements UnboundedQueue<QueueData> {
 
     private Node<QueueData> head;
     private Node<QueueData> tail;
