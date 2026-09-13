@@ -1,7 +1,5 @@
 package domain.game;
 
-import domain.simulation.telefonoDescacharrado.BigChalkboard;
-
 /**
  * Player
  */
@@ -13,6 +11,8 @@ public interface Player {
 
     String show();
 
-    void writeIn(String text, BigChalkboard bigChalkboard);
+    void writeIn(String text, WritablePlace writablePlace);
+
+    String getName();
 
 }

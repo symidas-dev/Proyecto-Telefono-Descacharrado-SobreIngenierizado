@@ -1,9 +1,11 @@
-package domain.simulation.telefonoDescacharrado;
+package domain.simulation.chalkboards;
+
+import domain.game.WritablePlace;
 
 /**
  * Pizarra
  */
-public class SmallChalkboard {
+public class SmallChalkboard implements WritablePlace {
 
     private char[] text;
 
@@ -15,6 +17,7 @@ public class SmallChalkboard {
         text = "".toCharArray();
     }
 
+    @Override
     public void write(String string) {
         text = string.toCharArray();
     }
