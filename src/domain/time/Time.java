@@ -39,5 +39,11 @@ public class Time {
     public boolean isHigherThan(Time startTime) {
         return TOTAL_MINUTES > startTime.TOTAL_MINUTES;
     }
+    @Override
+    public String toString() {
+        int hours = TOTAL_MINUTES / MINUTES_PER_HOUR;
+        int minutes = TOTAL_MINUTES % MINUTES_PER_HOUR;
+        return String.format("%02d:%02d", hours, minutes);
+    }
 
 }

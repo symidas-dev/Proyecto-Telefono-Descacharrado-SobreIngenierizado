@@ -1,18 +1,26 @@
-package domain.time;
+package domain.simulation;
+
+import domain.time.Clock;
+import domain.time.Time;
+import lib.Patterns.Common.Event;
+import lib.Patterns.Dispatcher.Dispatcher;
+import lib.Patterns.Dispatcher.EventSource;
 
 /**
  * Schedule
  */
-public class Schedule {
+public class Schedule implements SimulationEventSource {
 
     public final Time startTime;
     public final Time endTime;
     public final Clock clock;
+    private final Dispatcher<SimulationEventDTO> dispatcher;
 
     public Schedule(Builder builder) {
         this.startTime = builder.resolvedStartTime;
         this.endTime = builder.resolvedEndTime;
         this.clock = builder.clock;
+        this.dispatcher = builder.dispatcher;
     }
 
     public static class Builder {
@@ -23,6 +31,7 @@ public class Schedule {
         private Time resolvedStartTime;
         private Time resolvedEndTime;
         private Clock clock;
+        private Dispatcher<SimulationEventDTO> dispatcher;
 
         public Schedule build() {
             if (startTime == null) {
@@ -64,9 +73,16 @@ public class Schedule {
             this.clock = clock;
             return this;
         }
+
+        public Builder set(Dispatcher<SimulationEventDTO> dispatcher) {
+            this.dispatcher = dispatcher;
+            return this;
+        }
     }
 
     public void start() {
+        dispatcher.dispatchEvent(
+                new Event<EventSource, SimulationEventDTO>(this, SimulationEventDTO.startSchedule(startTime)));
         while (startTime.add(clock.getCurrentTime()).isBetweenIncludedBounderies(startTime, endTime)) {
             clock.nextTick();
         }

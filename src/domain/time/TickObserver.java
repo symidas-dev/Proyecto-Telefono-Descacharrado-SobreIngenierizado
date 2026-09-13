@@ -1,6 +1,6 @@
 package domain.time;
 
-import lib.Patterns.Observer.Event;
+import lib.Patterns.Common.Event;
 
 /**
  * TickObserver
