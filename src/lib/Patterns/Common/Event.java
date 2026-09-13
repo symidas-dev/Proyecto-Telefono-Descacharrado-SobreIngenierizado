@@ -1,4 +1,4 @@
-package lib.Patterns.Observer;
+package lib.Patterns.Common;
 
 /**
  * Event

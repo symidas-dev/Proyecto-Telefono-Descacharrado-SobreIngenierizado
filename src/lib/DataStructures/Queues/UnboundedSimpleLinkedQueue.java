@@ -5,6 +5,8 @@ public class UnboundedSimpleLinkedQueue<QueueData> implements UnboundedQueue<Que
     private Node<QueueData> head;
     private Node<QueueData> tail;
 
+    private int numberOfElements = 0;
+
     private static class Node<NodeElement> {
         public Node(NodeElement newData) {
             this.data = newData;
@@ -30,6 +32,7 @@ public class UnboundedSimpleLinkedQueue<QueueData> implements UnboundedQueue<Que
             tail.previous = newNode;
             tail = newNode;
         }
+        numberOfElements++;
     }
 
     /**
@@ -47,6 +50,7 @@ public class UnboundedSimpleLinkedQueue<QueueData> implements UnboundedQueue<Que
                 tail = null;
             }
 
+            numberOfElements--;
             return data;
         } else {
             return null;
@@ -75,6 +79,11 @@ public class UnboundedSimpleLinkedQueue<QueueData> implements UnboundedQueue<Que
     @Override
     public boolean isEmpty() {
         return head == null;
+    }
+
+    @Override
+    public int length() {
+        return numberOfElements;
     }
 
 }
