@@ -35,7 +35,7 @@ public class Main {
                 Manager manager = new Manager.Builder()
                                 .setName("Aisha")
                                 .set(new BoundedSimpleLinkedList<Player>(5))
-                                .setStarterWord("PEDAZOPETA")
+                                .setStarterWord("ASTRONAUTA")
                                 .set(dispatcher)
                                 .build();
 
