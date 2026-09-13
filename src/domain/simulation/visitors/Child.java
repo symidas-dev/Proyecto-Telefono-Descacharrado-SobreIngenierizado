@@ -3,16 +3,21 @@ package domain.simulation.visitors;
 import java.util.Random;
 
 import domain.game.Player;
+import domain.game.WritablePlace;
 import domain.reception.Visitor;
 import domain.reception.VisitorReceiver;
-import domain.simulation.telefonoDescacharrado.BigChalkboard;
-import domain.simulation.telefonoDescacharrado.SmallChalkboard;
+import domain.simulation.chalkboards.SmallChalkboard;
 
 /**
  * Child
  */
 public class Child implements Visitor, Player {
+    private final String name;
     private final SmallChalkboard smallChalkboard = new SmallChalkboard();
+
+    public Child(String name) {
+        this.name = name;
+    }
 
     @Override
     public void inscribeAt(VisitorReceiver receiver) {
@@ -47,8 +52,13 @@ public class Child implements Visitor, Player {
     }
 
     @Override
-    public void writeIn(String text, BigChalkboard bigChalkboard) {
-        bigChalkboard.write(text);
+    public void writeIn(String text, WritablePlace writeablePlace) {
+        writeablePlace.write(text);
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
 }
